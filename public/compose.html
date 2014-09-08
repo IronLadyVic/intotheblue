@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
+        <link rel="stylesheet" href="css/form-normalize.css">
+        <link rel="stylesheet" href="css/form-main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+<div class="container">
+    <header>
+        <div class="flex-brand wrap">
+            <ul>
+                <li><a href="index.html"><img src="img/into-the-blue.png"></a></li>
+            </ul>
+        </div>
+            <!-- <button id="navHandle"><i class="fa fa-bars fa-2x"></i></button> -->
+            <nav>
+            <ul class="group">
+                    <li><a href="">surfing</a></li>
+                    <li><a href="">wind surfing</a></li>
+                    <li><a href="">body boarding</a></li>
+                    <li><a href="">surf sports</a></li>
+                    <li><a href="">surf boating</a></li>
+                    <li><a href="compose.html">compose</a></li>
+                    <li><a href="account.html">account</a></li>
+                    <li><a href="login.html">login</a></li>
+                    <li><a href="register.html">register</a></li>
+         </ul>
+    </nav>
+</header>
+    <div class="main group">
+            <div id="login">  
+                <form class="cmxform"  id="login-form" method="get" action="">
+                    <h2 class="form-header">Compose here</h2>
+                  <fieldset>
+                    <!-- <legend>Please provide your name, email address (won't be published) and a comment</legend> -->
+                    <label for="topic">title of your blog</label>
+                    <p>
+                        <span class="icon1"><i class="fa fa-thumbs-o-up"></i></span>
+                        <select>
+                            <option>surfing</option>
+                            <option>wind surfing</option>
+                            <option>body boarding</option>
+                            <option>surf sports</option>
+                            <option>surf boating</option>
+                        </select>
+                    </p>
+                    <label for="title">choose your topic</label>
+                    <p><span><i class="fa fa-pencil-square"></i></span>
+                        <label for="username"></label>
+                        <input type="text" name="username" value="" minlength="2" required>
+                    </p>
+                    <label for="title">choose your pic</label>
+                    <p><span><i class="fa fa-camera"></i></span>
+                        <label for="file"></label>
+                        <input type="file" name="file" id="file" required>
+                    </p>
+                    
+                    <p>
+                       <!--  <span class="icon"><i class="fa fa-bookmark"></i></span> -->
+                        <label class="text" for="comment">start writing here</label>
+                        <textarea id="ccomment" name="comment" required></textarea>
+                    </p>
+                    <p><input class="reset" type="reset" value="Reset"/></p>
+                    <p>
+
+                        <input class="submit" type="submit" value="Submit"/>
+                    </p>
+                </fieldset>
+            </form>
+
+            <!-- <p>Not a member? <a href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p> -->
+
+        </div> 
+    </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
