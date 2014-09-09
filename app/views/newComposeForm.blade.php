@@ -1,4 +1,4 @@
-@extends('includes.template')
+@extends('includes.form')
 
 @section('form')
 

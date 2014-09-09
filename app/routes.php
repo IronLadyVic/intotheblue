@@ -52,7 +52,7 @@ Route::get('users/new',function(){
 
 //check user input using validate method
 
-Route::post('users',function(){
+Route::post('users',function($id){
 
 	$aRules = array(
 		"username"=>"required|unique:users",
@@ -72,7 +72,7 @@ Route::post('users',function(){
 		"required"=>"please fill in"
 		);
 
-	$oValidator = Validator::make($aUserInput, $aRules, $messages);
+	$oValidator = Validator::make(Input::all(), $aRules);
 
 	if($oValidator->fails()){
 		return Redirect::to("users/new")->withErrors($oValidator)->withInput();
@@ -81,6 +81,7 @@ Route::post('users',function(){
 		$aDetails["password"] = Hash::make($aDetails["password"]);
 		User::create($aDetails);
 
+		//redirect back to home page, Topic no.1 Body surfing
 		return Redirect::to("topics/1");
 
 	}
@@ -89,22 +90,57 @@ Route::post('users',function(){
 })
 
 //make form with user id and put the sticky data into the controls
+//passing through the user_id
 Route::get('users/{id}', function($id){
 
 	$oUser = User::find($id);
 
 	return View::make('userDetails')->with("user",$oUser);
 
-});
+})->before("auth");
 
 
 //edit user details then validate
 
-// Route::put('users/{id}', function(){
+Route::put('users/{id}/edit', function($id){
 
-// 	validate user editing their details
+	$oUser = User::find($id);
 
-// });
+	return View::make('editUserForm')->with("user",$oUser);
+
+})->before("auth");
+
+
+
+//update user details then validate
+
+Route::post('users/{id}', function($id){
+
+
+	$aRules = array(
+
+		'username'=>'required';
+		'firstname'=>'required';
+		'lastname'=>'required';
+		'email'=>'required|email|unique:users,email,'.$id;
+		//no need to have an avatar for personal preference
+		);
+	$oValidator = Validator::make(Input::all(),$aRules);
+
+	if($oValidator->passes){
+		$oUser = User::find($id);
+		$oUser->fill(Input::all());
+		$oUser->save();
+
+		//redirect to users page
+		return Redirect::to("users/".$id);
+
+	}else{
+		return Redirect::to("users,".$id.'/edit')->withErrors($oValidator)->withInput();
+	}
+	
+
+})->before("auth");
 
 
 //posts
