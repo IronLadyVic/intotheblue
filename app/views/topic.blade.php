@@ -1,4 +1,4 @@
-@extends('includes.template')
+@extends('includes.index')
 
 @section('topic')
 
@@ -9,12 +9,12 @@
 				<h4>{{$post->title}}</h4>
 				<p>{{$post->content}}</p>
 				<span>
-				{{Form::label('read-more');}}
+				{{Form::label('');}}
 				{{Form::button('read more');}}	
 				{{@Form::hidden("$postID", $post->id)}}
 				</span>
 				<span>
-				{{Form::label('comment');}}
+				{{Form::label('');}}
 				{{Form::button('comment');}}
 				{{@Form::hidden("$commentID", $comment->id)}}	
 				</span>			
