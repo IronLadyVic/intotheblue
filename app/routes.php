@@ -50,29 +50,34 @@ Route::get('users/new',function(){
 
 });
 
+//check user input using validate method
 
 Route::post('users',function(){
 
 	$aRules = array(
 		"username"=>"required|unique:users",
 		"password"=>"required|confirmed",
+		"password_confirmation"=>"required",
 		"firstname"=>"required",
 		"lastname"=>"required",
 		"email"=>"required|email|unique:users",
 		"avatar"=>"required"
-		)
+		);
+
 	$aUserInput = Input::all();
+
 	$messages= array(
 		"email"=>"email is invalid",
+		"avatar"=>"please upload a jpg or png file",
 		"required"=>"please fill in"
-		)
+		);
 
 	$oValidator = Validator::make($aUserInput, $aRules, $messages);
 
-	if($oValidator->fails){
+	if($oValidator->fails()){
 		return Redirect::to("users/new")->withErrors($oValidator)->withInput();
 	}else{
-		$Details = Input::all();
+		$aDetails = Input::all();
 		$aDetails["password"] = Hash::make($aDetails["password"]);
 		User::create($aDetails);
 
@@ -84,7 +89,7 @@ Route::post('users',function(){
 })
 
 //make form with user id and put the sticky data into the controls
-Route::get('users/{id}',function(){
+Route::get('users/{id}', function($id){
 
 	$oUser = User::find($id);
 
@@ -92,29 +97,22 @@ Route::get('users/{id}',function(){
 
 });
 
-Route::get('users/{id}',function(){
-
-	$oUser = User::find($id);
-
-	return View::make('userDetails')->with("user",$oUser);
-
-});
 
 //edit user details then validate
 
-Route::put('users/{id}',function(){
+// Route::put('users/{id}', function(){
 
-	//validate user editing their details
+// 	validate user editing their details
 
-});
+// });
 
 
 //posts
 
 
-Route::get('posts/create',function(){
+Route::get('posts/create', function(){
 
-	$aTopics = Topic::lists("title","id");
+	$aTopics = Topic::lists("name","id"); //retrieving a list of colomn values This method will return an array of role titles. You may also specify a custom key column for the returned array:
 
 	return View::make('newComposeForm')->with('topics', $aTopics);
 
@@ -153,7 +151,7 @@ Route::post('posts',function(){
 
 		$oPost = Post::create('aDetails');
 		//once all validated the post will be placed into the topic_id that it matches to in the system
-		return Redirect::to('topics/'.$oTopic->topic_id);
+		return Redirect::to('topics/'.$oPost->topic_id);
 
 	}else{
 		Redirect::to('posts/create')->withErrors($oValidator)->withInput();
