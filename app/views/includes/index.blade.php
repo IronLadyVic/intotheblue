@@ -43,7 +43,7 @@
 		<header>
 				<div class="flex-brand wrap">
       				<ul>
-        				<li><a href="{{URL::to('topics/'.$topic->id)}}"><img src="{{URL::to('img/into-the-blue.png')}}"></a></li>
+        				<li><a href="{{URL::to('topics/1')}}"><img src="{{URL::to('img/into-the-blue.png')}}"></a></li>
      		 		</ul>
     			</div>
 			<!-- <button id="navHandle"><i class="fa fa-bars fa-2x"></i></button> -->
@@ -52,10 +52,20 @@
 				@foreach(Topic::all() as $topic)
 					<li><a href="{{URL::to('topics/'.$topic->id)}}">{{$topic->name}}</a></li>
           		@endforeach	
-          			<li><a href="compose.html">compose</a></li>
-          			<li><a href="account.html">account</a></li>
-          			<li><a href="login.html">login</a></li>
-          			<li><a href="register.html">register</a></li>
+          			
+				<!-- //if user is not a member do this -->
+          			@if(Auth::guest())
+          			<li><a href="{{URL::to('login')}}">login</a></li>
+          			<li><a href="{{URL::to('users/new')}}">register</a></li>
+
+          		<!-- //if user is a member do this -->	
+          			@else
+          			<li><a href="{{URL::to('compose')}}">compose</a></li>
+          			<li><a href="{{URL::to('users/details')}}">account</a></li>
+					<li><a href="{{URL::to('users/details')}}">logout</a></li>
+					@endif
+          			
+          			
           			<!-- <li><section class="author-images"><img src="" alt=""></section></li>
           			<li><p class="author">Vic your logged in</p></li> -->
 				</ul>

@@ -3,7 +3,7 @@
 @section('form')
 
 <!-- If your form is going to accept file uploads, add a files option to your array: -->
-	{{@Form::open(array('url'=> 'posts/create', 'method'=>post)) class=>'cmxform' id=>'login-form'}} 
+	{{Form::open(array('url'=> 'posts/create', 'method'=>post, class=>'cmxform' id=>'login-form')) }} 
 	<form class="cmxform"  id="login-form" method="get" action="">
 		<h2 class="form-header">Compose here</h2>            
 		<p>
@@ -39,8 +39,8 @@
 			{{$errors->first('photo_path','<p class="error">:message</p>');}}
 		</p>
 
-		{{Form::reset('Reset') class=>"reset";}}
-		{{Form::submit('Submit post') class=>"submit";}}
+		{{Form::reset('Reset', array(class=>"reset"))}}
+		{{Form::submit('Submit post', array(class=>"submit"))}}
 
 	</form>
 	

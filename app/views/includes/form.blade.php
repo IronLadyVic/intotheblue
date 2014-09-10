@@ -18,9 +18,9 @@
 
 	<!-- CSS
   ================================================== -->
-  <!-- 	{{HTML::style('css/base.css')}}
-  	{{HTML::style('css/skeleton.css')}}
-	{{HTML::style('css/layout.css')}} -->
+  	<!-- {{HTML::style('css/base.css')}}
+  	{{HTML::style('css/skeleton.css')}} -->
+	{{HTML::style('css/layout.css')}}
 	{{HTML::style('css/form-main.css')}}
 	{{HTML::style('css/form-normalize.css')}}
 	
@@ -33,7 +33,7 @@
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-	<img class="vics-image" src="img/bluebyVictoriaClark.png">
+	
 	<!-- Primary Page Layout
 	================================================== -->
 
@@ -43,7 +43,7 @@
 		<header>
 				<div class="flex-brand wrap">
       				<ul>
-        				<li><a href="{{URL::to('topics/'.$topic->id)}}"><img src="img/into-the-blue.png"></a></li>
+        				<li><a href="{{URL::to('topics/1')}}"><img src="{{URL::to('img/into-the-blue.png')}}"></a></li>
      		 		</ul>
     			</div>
 			<!-- <button id="navHandle"><i class="fa fa-bars fa-2x"></i></button> -->
@@ -52,22 +52,22 @@
 				@foreach(Topic::all() as $topic)
 					<li><a href="{{URL::to('topics/'.$topic->id)}}">{{$topic->name}}</a></li>
           		@endforeach	
-          			<li><a href="compose.html">compose</a></li>
-          			<li><a href="account.html">account</a></li>
-          			<li><a href="login.html">login</a></li>
-          			<li><a href="register.html">register</a></li>
+          			<li><a href="{{URL::to('compose')}}">compose</a></li>
+          			<li><a href="{{URL::to('users/')}}">account</a></li>
+          			<li><a href="{{URL::to('login')}}">login</a></li>
+          			<li><a href="{{URL::to('users/new')}}">register</a></li>
           			<!-- <li><section class="author-images"><img src="" alt=""></section></li>
           			<li><p class="author">Vic your logged in</p></li> -->
 				</ul>
 			</nav>
 		</header>
-		
-
+	
 		<div class="main group">
 		<div id="login"> 
 		@yield('form')
 		</div>
 		</div>
+
 <footer></footer>
 
 </div><!-- container -->

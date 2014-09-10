@@ -21,6 +21,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
+	//user has many comments
+	public function comments(){
+		return $this->hasMany('Comment');
+	}
 	protected $hidden = array('password', 'remember_token');
+
+	//we need to tell the route when a user fills in their details that the colomns in the table need to be filled in SQl.
+	protected $fillable = array('email', 'password', 'firstname', 'lastname', 'username', 'avatar');
+
+
+
 
 }

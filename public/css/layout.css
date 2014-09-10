@@ -87,7 +87,12 @@ h2{
 
 
 i{
-	color:rgb(255,113,44);
+		z-index: 1000;
+	color:white;
+	position: relative;
+	font-size: 0.5em;
+	/*width: 5em;
+	height: 5em;*/
 }
 
 a{

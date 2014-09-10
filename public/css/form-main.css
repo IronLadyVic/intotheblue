@@ -159,8 +159,35 @@ p {
 .clearfix:after { clear: both; }
 
 #login {
-    margin: 50px auto;
+    position: relative;
+    margin-top: 30em;
+    /*margin: 50px auto;*/
     width: 280px;
+}
+#userDetails{
+    position: relative;
+    
+    margin-top: -50px;
+    width: 280px;
+}
+#userDetails input{
+        background-color: #3b4148;
+    border-radius: 0px 3px 3px 0px;
+    color: white;
+    margin-bottom: 1em;
+    width: 230px;
+    height: 50px;
+}
+#userDetails span {
+    background-color: #363b41;
+    border-radius: 3px 0px 0px 3px;
+    color: #606468;
+    display: block;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
 }
 
 #login form span {
@@ -184,9 +211,33 @@ p {
     border-radius: 0px 3px 3px 0px;
     color: white;
     margin-bottom: 1em;
-    padding: 0 16px;
-    width: 198px;
+    width: 230px;
+    height: 50px;
 }
+#login form input[type="password"]{
+    color: white;
+}
+.member{
+    -webkit-border-radius: 3px;
+background-color: #CFE6E6;
+color: black;
+font-weight: bold;
+margin-bottom: 2em;
+text-transform: uppercase;
+width: 280px;
+height: 50px;
+}
+.member a:hover {
+    background-color: #b3d4fc;
+}
+
+/*i{
+    position: absolute;
+    z-index: 1000;
+    color: white;
+    width: 10em;
+    height: 10em;
+}*/
 select{
        background-color: #3b4148;
     border-radius: 0px 3px 3px 0px;
