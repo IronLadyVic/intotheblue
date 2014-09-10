@@ -8,25 +8,25 @@
 
                 {{Form::label('username','Username')}}
                 <p><span><i class="fa fa-user"></i></span>                    
-                    {{Form::text('username',$user->username,array("disabled"=>"disabled"))}}
+                    {{Form::text('username',$user->username, array("disabled"=>"disabled"))}}
                 </p>
 
                 {{Form::label('firstname','First Name')}}
                 <p>
                     <span><i class="fa fa-user"></i></span>                    
-                    {{Form::text('firstname',$user->firstname,array("disabled"=>"disabled"))}}
+                    {{Form::text('firstname',$user->firstname, array("disabled"=>"disabled"))}}
                     
                 </p>
                 {{Form::label('lastname','Last Name')}}
                 <p>
                     <span><i class="fa fa-user"></i></span>                    
-                    {{Form::text('lastname',$user->lastname,array("disabled"=>"disabled"))}}
+                    {{Form::text('lastname',$user->lastname, array("disabled"=>"disabled"))}}
                     
                 </p>
                  {{Form::label('email','Email')}}
                 <p>
                     <span><i class="fa fa-envelope-o"></i></span>                   
-                    {{Form::text('email',$user->email,array("disabled"=>"disabled"))}}
+                    {{Form::text('email',$user->email, array("disabled"=>"disabled"))}}
                     
                 </p>
                 {{Form::label('avatar','My Avatar')}}
@@ -35,10 +35,9 @@
                     {{Form::text('avatar',$user->avatar,array("disabled"=>"disabled"))}}
                    
                 </p>
+            
+                <p class="edit"><a href="{{URL::to('users/'.$user->id.'/edit')}}">Edit my details</a></p>
                 
-                
-                <p class="submit"><a href="{{URL::to('users/'.$user->id.'/edit')}}"></a>Edit my details</p>
-                </form>
 </div>
 
 

@@ -39,8 +39,8 @@
 			{{$errors->first('photo_path','<p class="error">:message</p>');}}
 		</p>
 
-		{{Form::reset('Reset', array(class=>"reset"))}}
-		{{Form::submit('Submit post', array(class=>"submit"))}}
+		{{Form::reset('Reset', array("class"=>"reset"))}}
+		{{Form::submit('Submit post', array("class"=>"submit"))}}
 
 	</form>
 	

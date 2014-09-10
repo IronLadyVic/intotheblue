@@ -86,15 +86,6 @@ h2{
 }
 
 
-i{
-		z-index: 1000;
-	color:white;
-	position: relative;
-	font-size: 0.5em;
-	/*width: 5em;
-	height: 5em;*/
-}
-
 a{
 	text-decoration: none;
 	color: #444;
@@ -326,7 +317,7 @@ height: 80px;
 	}
 
 	.main>article{
-		width: 32%;
+		width: 50%;
 		float:left;
 	}
 

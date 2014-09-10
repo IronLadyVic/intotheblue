@@ -25,7 +25,7 @@
 {{Form::close()}}
 {{Session::get("error")}}
 
-<a href="{{URL::to('users/new')}}" class="member">become a member</a>
+<p class="edit"><a href="{{URL::to('users/new')}}" class="member">become a member</a></p>
 
 
 

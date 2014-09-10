@@ -2,13 +2,13 @@
 
 
 @section('form')
- 	{{Form::model($user, array('url'=> 'users/'. $user->id, 'method'=>'put', class=>'cmxform' id=>'login-form)) '}}
+ 	{{Form::model($user, array('url'=> 'users/'. $user->id, 'method'=>'put', 'class'=>'cmxform', 'id'=>'login-form'))}}
             <h2 class="form-header">Edit my details</h2>
 
                 {{Form::label('username','Username')}}
                 <p><span><i class="fa fa-user"></i></span>                    
-                    {{Form::text('username')}}
-                    {{$errors->first('username','<p class="error">:message</p>')}}
+                    {{Form::text('username',$user->username, array("disabled"=>"disabled"))}}
+                    
                 </p>
                 {{Form::label('firstname','First Name')}}
                 <p>
@@ -34,9 +34,10 @@
                     {{Form::file('avatar')}}
                     {{$errors->first('avatar','<p class="error">:message</p>')}}
                 </p>
-				{{Form::reset('Reset', array(class=>"reset"))}}
-				{{Form::submit('Update details', array(class=>"submit"))}}
-                </form>
+				
+				
+                {{Form::submit('Update details', array('class'=>'submit'))}}
+                
 {{Form::close()}}
 
 @stop

@@ -52,12 +52,18 @@
 				@foreach(Topic::all() as $topic)
 					<li><a href="{{URL::to('topics/'.$topic->id)}}">{{$topic->name}}</a></li>
           		@endforeach	
-          			<li><a href="{{URL::to('compose')}}">compose</a></li>
-          			<li><a href="{{URL::to('users/')}}">account</a></li>
+          			
+				<!-- //if user is not a member do this -->
+          			@if(Auth::guest())
           			<li><a href="{{URL::to('login')}}">login</a></li>
           			<li><a href="{{URL::to('users/new')}}">register</a></li>
-          			<!-- <li><section class="author-images"><img src="" alt=""></section></li>
-          			<li><p class="author">Vic your logged in</p></li> -->
+
+          		<!-- //if user is a member do this -->	
+          			@else
+          			<li><a href="{{URL::to('compose')}}">compose</a></li>
+          			<li><a href="{{URL::to('users/details')}}">account</a></li>
+					<li><a href="{{URL::to('logout')}}">logout</a></li>
+					@endif
 				</ul>
 			</nav>
 		</header>

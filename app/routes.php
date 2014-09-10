@@ -54,15 +54,15 @@ Route::get('login',function(){
 
 Route::post('login',function(){
 
-	$aUserDetails = array(
+	$aLoginDetails = array(
 		'username'=>Input::get('username'),
 		'password'=>Input::get('password')
 
 		);
-	if(Auth::attempt($aUserDetails)){
-		return Redirect::to('topics/1'.Auth::user()->id);
+	if(Auth::attempt($aLoginDetails)){
+		return Redirect::intended("users/".Auth::user()->id);
 	}else{
-		return Redirect::to('login')->with('Error','Try again');
+		return Redirect::to("login")->with("Error","Try again");
 	}
 
 });
@@ -78,14 +78,14 @@ Route::get('logout',function(){
 });
 
 
-// Route::get('posts/{id}',function($id){
+Route::get('posts/{id}',function($id){
 
-// 	$oPost = Post::find($id); //using the model Topic 
+	$oPost = Post::find($id); //using the model Topic 
 
-// 	//binding into Laravel. 
-// 	return View::make("post")->with("post",$oPost);
+	//binding into Laravel. 
+	return View::make("post")->with("post",$oPost);
 
-// });
+});
 
 
 //make form for new member
@@ -150,7 +150,7 @@ Route::get('users/{id}', function($id){
 
 //edit user details then validate
 
-Route::put('users/{id}/edit', function($id){
+Route::get('users/{id}/edit', function($id){
 
 	$oUser = User::find($id);
 
@@ -162,35 +162,34 @@ Route::put('users/{id}/edit', function($id){
 
 //update user details then validate
 
-// Route::post('users/{id}', function($id){
+Route::post('users/{id}', function($id){
 
 
-// 	$aRules = array(
+	$aRules = array(
+		'firstname'=>'required',
+		'lastname'=>'required',
+		'email'=>'required|email|unique:users,email,'.$id);
+		//no need to have an avatar for personal preference
+		
+	$oValidator = Validator::make(Input::all(),$aRules);
 
-// 		'username'=>'required',
-// 		'firstname'=>'required',
-// 		'lastname'=>'required',
-// 		'email'=>'required|email|unique:users,email,'.$id
-// 		//no need to have an avatar for personal preference
-// 		);
-// 	$oValidator = Validator::make(Input::all(),$aRules);
+	if($oValidator->passes()){
+		// $oUser = User::find($id);
+		// $oUser->fill(Input::all());
+		// $oUser->save();
+		User::find($id)->fill(Input::all())->save();
+		//redirect to users page
 
-// 	if($oValidator->passes){
-// 		$oUser = User::find($id);
-// 		$oUser->fill(Input::all());
-// 		$oUser->save();
+		return Redirect::to("users/".$id);
 
-// 		//redirect to users page
-// 		return Redirect::to("users/".$id);
-
-// 	}else{
-// 		return Redirect::to("users,".$id.'/edit')->withErrors($oValidator)->withInput();
-// 	}
+	}else{
+		return Redirect::to("users/".$id.'/edit')->withErrors($oValidator)->withInput();
+	}
 	
 
-// });
-// ->before("auth")
+});
 
+//->before("auth")
 //posts
 
 

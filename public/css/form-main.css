@@ -123,10 +123,9 @@ textarea {
 /* ---------- GENERAL ---------- */
 
 body {
-    background-color: #C5C5C8;
-    color: #606468;
+  
   font: 87.5%/1.5em 'Open Sans', sans-serif;
-  margin: 0;
+ 
 }
 
 a {
@@ -160,14 +159,14 @@ p {
 
 #login {
     position: relative;
-    margin-top: 30em;
+    margin-top: 35em;
     /*margin: 50px auto;*/
     width: 280px;
 }
 #userDetails{
     position: relative;
     
-    margin-top: -50px;
+    margin-top: -385px;
     width: 280px;
 }
 #userDetails input{
@@ -201,10 +200,16 @@ p {
     text-align: center;
     width: 50px;
 }
-
-#login form input {
-    height: 50px;
+#login form span i{
+    display: block;
+    position: absolute;
+    color: white;
+    font-size: 1em;
+    width: 5em;
+    height: 5em;
+    z-index: 1000;
 }
+
 
 #login form input[type="text"], input[type="password"], input[type="email"], input[type="file"] {
     background-color: #3b4148;
@@ -229,6 +234,27 @@ height: 50px;
 }
 .member a:hover {
     background-color: #b3d4fc;
+}
+
+.edit{
+    background-color: #CFE6E6;
+    border-radius: 3px 3px 3px 3px;
+    margin-bottom: 1em;
+    width: 280px;
+    height: 50px;
+}
+.edit a{
+    color: black;
+    display: block;
+    text-align: center;
+    line-height: 380%;
+    font-weight: bold;
+margin-bottom: 2em;
+text-transform: uppercase;
+}
+.edit a:hover{
+    background-color: #b3d4fc;
+    color:black;
 }
 
 /*i{
@@ -270,6 +296,7 @@ textarea{
     margin-bottom: 2em;
     text-transform: uppercase;
     width: 280px;
+    height: 50px;
 }
 
 #login form input[type="reset"]:hover {
@@ -322,13 +349,16 @@ ul li a{
         -ms-transition: all 0.3s;
         -o-transition: all 0.3s;
         transition: all 0.3s;
+        text-decoration: none;
+        list-style-type: none;
 
     }
 
     ul a:hover, .button{
         background: #CFE6E6; /* Old browsers */
         color: black;
-
+        text-decoration: none;
+        list-style-type: none;
 
     }
 

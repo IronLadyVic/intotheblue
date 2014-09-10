@@ -62,7 +62,7 @@
           			@else
           			<li><a href="{{URL::to('compose')}}">compose</a></li>
           			<li><a href="{{URL::to('users/details')}}">account</a></li>
-					<li><a href="{{URL::to('users/details')}}">logout</a></li>
+					<li><a href="{{URL::to('logout')}}">logout</a></li>
 					@endif
           			
           			
