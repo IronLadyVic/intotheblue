@@ -2,7 +2,7 @@
 
 
 @section('form')
- 	{{Form::model($user, array('url'=> 'users/'. $user->id, 'method'=>'put', 'class'=>'cmxform', 'id'=>'login-form'))}}
+ 	{{Form::model($user, array('url'=> 'users/'. $user->id, 'method'=>'put', 'class'=>'cmxform', 'id'=>'login-form', 'files'=>'true'))}}
             <h2 class="form-header">Edit my details</h2>
 
                 {{Form::label('username','Username')}}

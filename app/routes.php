@@ -225,8 +225,8 @@ Route::post('posts',function(){
 
 		'topic_id'=>'required',
 		'title'=>'required',
-		'content'=>'required',
-		'photo_path'=>'required'
+		'photo_path'=>'required',
+		'content'=>'required'
 
 		);
 
@@ -234,9 +234,11 @@ Route::post('posts',function(){
 
 	//if validation is all good then...
 	if($oValidator->passes()){
-		//upload photo
-		$sNewPhotoName = Input::get("title").".".Input::file("photo_path")->getClientOriginalExtension();
+		//upload photo//Retrieving The Extension Of An Uploaded File
+		$sNewPhotoName = Input::get("title").".".Input::file('photo_path')->getClientOriginalExtension();
 		Input::file("photo_path")->move("blog-photos",$sNewPhotoName);
+
+		Input::file('photo_path')->move("blog-photos", $sNewPhotoName);
 
 		$aDetails = Input::all();
 		$aDetails["photo_path"] = $sNewPhotoName;

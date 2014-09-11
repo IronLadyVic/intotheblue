@@ -306,6 +306,9 @@ height: 80px;
 /*Desktop inclusive*/
 @media only screen and (min-width: 60em) {
 
+	.main{
+		width: 100%;
+	}
 	header{
 		width: 25%;
 		
@@ -323,24 +326,27 @@ height: 80px;
 
 	/*undo previous setting*/
 
-		.main>article:nth-of-type(2n+1){
-			clear:none;
-		}
+	.main>article:nth-of-type(2n+1){
+		clear:none;
+	}
 
-		.main>article:not(:nth-of-type(2n+1)){
-			margin-left: 0;
-		}
+	.main>article:not(:nth-of-type(2n+1)){
+		margin-left: 0;
+	}
 
 	.main>article:nth-of-type(3n+1){
 		clear:both;
 	}
 
 	.main>article:not(:nth-of-type(3n+1)){
-		margin-left: 2%;
+		/*margin-left: 1em;*/
+		
 	}
-		.group{
+	.group{
 		z-index: 1000;
 	}
+
+	
 
 
 
