@@ -43,7 +43,8 @@ rgb(105,93,70)
 /* ---------- GENERAL ---------- */
 
 body {
-  font: 87.5%/1.5em 'Helvetica', sans-serif;
+  /*font: 87.5%/1.5em 'Helvetica', sans-serif;*/
+  font: 87.5%/1.5em 'Open Sans', sans-serif;
   margin: 0;
 }
 
@@ -53,7 +54,7 @@ font-size: 100%;
 font-weight: 400;
 line-height: 1.53333;
 color: black;
-background-color: #fff;
+
 -webkit-font-smoothing: antialiased;
 -webkit-text-size-adjust: none;
 letter-spacing: 0.05em;
@@ -63,7 +64,7 @@ letter-spacing: 0.05em;
 
 }
 article{
-	font-family: 'Helvetica';
+	font-family: 'Open Sans', sans-serif;
 }
 
 .group:after{
@@ -73,16 +74,18 @@ article{
 }
 
 h4{
-	font-family: 'Helvetica';
+	font-family: 'Open Sans', sans-serif;
 	color: black;
 	padding-left: 0.3em;
+	font-weight: bold;
 }
 p{
-	font-family: 'Helvetica';
+	font-family: 'Open Sans', sans-serif;
 }
 h2{
-	font-family: 'Helvetica';
+	font-family: 'Open Sans', sans-serif;
 	padding-top: 0.5em;
+	font-weight: bold;
 }
 
 
@@ -152,6 +155,53 @@ height: 80px;
 	text-align: center;
 }
 
+.post article{
+	width: 200%;
+	background-color: #CFE6E6;
+	padding: 0.5em;
+}
+.post{
+	position: absolute;
+	margin-left: 20em;
+	margin-top: 8em;
+
+}
+.post textarea{
+	width: 92%;
+		border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+
+}
+.post-comment{
+	border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+background-color: #3b4148;
+color: white;
+font-weight: bold;
+margin-bottom: 2em;
+text-transform: uppercase;
+width: 180px;
+height: 30px;
+
+}
+    .flex-brand a:hover{
+        background: none; /* Old browsers */
+        text-decoration: none;
+        list-style-type: none;
+        border-bottom: none;
+
+    }
+
+    #navHandle{
+        position: absolute;
+        top:1em;
+        right: 0
+    }
+
+
+
 /* #Media Queries
 ================================================== */
 
@@ -177,6 +227,7 @@ height: 80px;
 
 	}
 
+
 	#navHandle{
 		position: absolute;
 		top:1em;
@@ -186,21 +237,23 @@ height: 80px;
 /*Tablet inclusive*/
 @media only screen and (min-width: 20em) {
 
-	header{
-		position: relative;
-		border-bottom: none;
-	}
+    header{
+        position: relative;
+        border-bottom: none;
+    }
+ul li{
+    margin-right: 5em;
+}
+ul li img{
+	width: 50%;
+	margin-left: 5em;
+
+}
 
 	#navHandle{
 		display: none;
 	}
 
-	ul li{
-		width: 33.333333%;
-		float: left;
-		color: white;
-		z-index: 1000;
-	}
 
 	.container nav{
 		height:auto;
@@ -214,6 +267,7 @@ height: 80px;
 		z-index: 1000;
 	}
 
+
 }
 
 /*Big tablet inclusive*/
@@ -222,6 +276,11 @@ height: 80px;
 	header{
 		position: relative;
 	}
+	ul li img{
+	width: 60%;
+	
+
+}
 
 	.main>article{
 		width: 47%;
@@ -247,6 +306,12 @@ height: 80px;
 		width: 60%;
 		float: none;
 	}
+		ul li img{
+	width: 100%;
+	margin-left: -2em;
+	
+
+}
 
 	header{
 		width: 35%;
@@ -306,9 +371,6 @@ height: 80px;
 /*Desktop inclusive*/
 @media only screen and (min-width: 60em) {
 
-	.main{
-		width: 100%;
-	}
 	header{
 		width: 25%;
 		
@@ -320,34 +382,27 @@ height: 80px;
 	}
 
 	.main>article{
-		width: 50%;
+		width: 32%;
 		float:left;
 	}
 
 	/*undo previous setting*/
 
-	.main>article:nth-of-type(2n+1){
-		clear:none;
-	}
+		.main>article:nth-of-type(2n+1){
+			clear:none;
+		}
 
-	.main>article:not(:nth-of-type(2n+1)){
-		margin-left: 0;
-	}
+		.main>article:not(:nth-of-type(2n+1)){
+			margin-left: 0;
+		}
 
 	.main>article:nth-of-type(3n+1){
 		clear:both;
 	}
 
 	.main>article:not(:nth-of-type(3n+1)){
-		/*margin-left: 1em;*/
-		
+		margin-left: 2%;
 	}
-	.group{
-		z-index: 1000;
-	}
-
-	
-
 
 
 }

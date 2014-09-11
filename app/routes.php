@@ -23,6 +23,62 @@
 // 6. posts get
 // 7. comment post
 // 8. comment put	
+// |--------------------------------------------------------------------------
+// | Composer
+// |--------------------------------------------------------------------------
+// {
+//     "require": {
+//         "monolog/monolog": "1.0.*"
+//         As you can see, require takes an object that maps package names (e.g. monolog/monolog) to package versions (e.g. 1.0.*).
+// 			The package name consists of a vendor name and the project's name. Often these will be identical - 
+//the vendor name just exists to prevent naming clashes. It allows two different people to create a library named json, which would then just be named igorw/json and seldaek/json.
+
+// Here we are requiring monolog/monolog, so the vendor name is the same as the project's name. 
+//For projects with a unique name this is recommended. It also allows adding more related projects under the same namespace later on. If you are maintaining a library, this would make it really easy to split it up into smaller decoupled parts.
+//     }
+// } you can pass in composer events in a function\
+
+// View::composer('hello', function(){
+
+// 	$view['name']= 'Vic';
+
+// });
+//unit test this composer by making a class and passing in the function compose
+// View::composer('hello', 'helloComposer');
+
+// class helloComposer{
+// 	public function compose($view){
+// 		$view['name'] = 'Vic';
+// 	}
+// }
+
+// screen will show 'hello Vic';
+
+
+// Route::get('/',function(){
+
+// 	return View::make('hello');
+
+// });
+
+//passing in a string filter, works for mail, events, view composers.
+
+// Route::filter('foo'm 'FooFilter'); testibility, you can break this up into classes to test better
+
+// class FooFilter{
+// 	public function filter($route, $request){
+// 		return 'filtered';
+// 	}
+// }
+//closure call back. the screen will print out filtered
+
+
+
+
+
+
+
+
 
 
 Route::get('/', function()
@@ -238,7 +294,6 @@ Route::post('posts',function(){
 		$sNewPhotoName = Input::get("title").".".Input::file('photo_path')->getClientOriginalExtension();
 		Input::file("photo_path")->move("blog-photos",$sNewPhotoName);
 
-		Input::file('photo_path')->move("blog-photos", $sNewPhotoName);
 
 		$aDetails = Input::all();
 		$aDetails["photo_path"] = $sNewPhotoName;
@@ -254,7 +309,21 @@ Route::post('posts',function(){
 
 })->before("auth|admin");
 
-//make a post for the comment.
+//make a post for the post for a user to comment.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // //post create because the id is in create. 
 // Route::get('posts/{id}',function($id){

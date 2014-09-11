@@ -30,7 +30,9 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
+	<!-- add bootstrap CDN to ensure all your font icons are displayed in Laravel 4.0 -->
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<img class="vics-image" src="{{URL::to('img/bluebyVictoriaClark.png')}}">

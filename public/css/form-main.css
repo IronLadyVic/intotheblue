@@ -201,13 +201,14 @@ p {
     width: 50px;
 }
 #login form span i{
-    display: block;
-    position: absolute;
-    color: white;
+    padding-right: 0.5em;
+    color: #B1B3B7;
     font-size: 1em;
-    width: 5em;
-    height: 5em;
     z-index: 1000;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
 }
 
 #login label{
@@ -376,31 +377,25 @@ ul li a{
         list-style-type: none;
 
     }
+        .flex-brand a{
+
+        border-bottom: none;
+
+    }
+    .flex-brand a:hover{
+        background: none; /* Old browsers */
+        text-decoration: none;
+        list-style-type: none;
+        border-bottom: none;
+
+    }
 
     #navHandle{
         position: absolute;
         top:1em;
         right: 0
     }
-/*.author-images img {
-width: 80px;
-border: 3px solid #FFF;
-box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-border-radius: 100%;
-position: relative;
-margin-left: 2em;
-margin-top: 1em;
-width: 80px;
-height: 80px;
 
-}
-.author{
-    position: absolute;
-    margin-top: 0.5em;
-    color: white;
-    margin-left: 1em;
-    text-align: center;
-}*/
 .icon1{
     position: absolute;
 
@@ -414,6 +409,106 @@ height: 80px;
 .text{
     position: relative;
     
+}
+
+
+/* ==========================================================================
+   breakpoints
+   ==========================================================================
+
+
+
+
+
+/*Tablet inclusive*/
+@media only screen and (min-width: 20em) {
+
+    header{
+        position: relative;
+        border-bottom: none;
+    }
+ul li{
+    margin-right: 5em;
+}
+form{
+    margin-left: 3em;
+    
+    width: 100%;
+}
+.edit{
+    margin-left: 3em;
+}
+
+
+}
+
+/*Big tablet inclusive*/
+@media only screen and (min-width: 30em) {
+
+    header{
+        position: relative;
+    }
+
+
+}
+
+
+/*Small Laptop inclusive*/
+@media only screen and (min-width: 40em) {
+
+
+    ul li{
+        width: 60%;
+        float: none;
+    }
+
+    header{
+        width: 35%;
+        position: fixed;
+    }
+
+
+}
+
+/*Big Laptop inclusive*/
+@media only screen and (min-width: 50em) {
+
+
+
+    
+
+}
+
+/*Desktop inclusive*/
+@media only screen and (min-width: 60em) {
+
+    header{
+        width: 25%;
+        
+    }
+
+
+
+}
+
+/*very big screen - inclusive*/
+
+@media only screen and (min-width: 80em) {
+
+
+
+    header{
+        width: 25%;
+        position: relative;
+        float: left
+    }
+
+    .container{
+        max-width: 80em;
+        margin: auto;
+    }
+
+
 }
 
 

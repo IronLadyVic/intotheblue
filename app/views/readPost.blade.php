@@ -1,28 +1,27 @@
 @extends('includes.index')
 
-@section('topic')
+@section('form')
+<div class="post">
 
 <h2>{{$topic->name}}</h2>
-	@foreach($topic->posts as $post)
-			<article class="group">
-				<img src="{{URL::to('blog-photos/'.$post->photo_path)}}" alt="">
-				<h4>{{$post->title}}</h4>
-				<p>{{$post->content}}</p>
-				<span>
-				{{Form::label('Comment');}}
-				{{Form::textarea('comment');}}
-				{{@Form::hidden("$commentID", $comment->id)}}	
-				</span>
-				<textarea class="textarea_comment"></textarea>			
-			</article>
-	@endforeach
+	<article class="group">
+		<img src="{{URL::to('blog-photos/'.$post->photo_path)}}" alt="post photo">
+		<h4>{{$post->title}}</h4>
+		<p>{{$post->content}}</p>
+		<h4>comment</h4>
+		{{Form::open(array('url'=> 'comments')) }}
 
-<!-- 	1. I want to see a post - with image etc, with a button that says comment
-	2.  comment redirects to same page with a text area to comment in-->
+		{{Form::textarea('comment')}}
 
-<!-- 	{{Form::open(array('url'=> 'comments', 'class'=>'cmxform', 'id'=>'login-form')) }}	
-	{{Form::hidden("$postID", $post->id)}}	
-	{{Form::close()}} -->
-	
-		
+		{@Form::hidden("$commentID", $comment->id)}}
+
+		<p>
+		{{Form::hidden("$postID", $post->id)}}
+		{{Form::submit('Post Comment', array('class'=>"post-comment"))}}
+		</p>	
+
+		{{Form::close()}}
+	</article>
+</div>		
 @stop
+

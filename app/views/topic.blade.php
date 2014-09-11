@@ -9,16 +9,13 @@
 				<h4>{{$post->title}}</h4>
 				<p>{{$post->content}}</p>
 				<span>
-				<a href="{{URL::to('posts/'.$post->id)}}"></a>{{Form::label('');}}
+				<a href="{{URL::to('posts/comment'.$post->id)}}"></a>{{Form::label('');}}
 				{{Form::button('read more');}}	
 				{{@Form::hidden("$postID", $post->id)}}</a>
-				</span>
-				<!-- <span>
-				{{Form::label('');}}
-				{{Form::button('comment');}}
-				{{@Form::hidden("$commentID", $comment->id)}}	
-				</span>	 -->		
+				</span>	
 			</article>
 	@endforeach
 		
 @stop
+
+<!-- not sure whether to use the URL as posts/comment???? -->
