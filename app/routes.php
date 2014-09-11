@@ -59,10 +59,11 @@ Route::post('login',function(){
 		'password'=>Input::get('password')
 
 		);
+
 	if(Auth::attempt($aLoginDetails)){
 		return Redirect::intended("users/".Auth::user()->id);
 	}else{
-		return Redirect::to("login")->with("Error","Try again");
+		return Redirect::to('login')->with("error","Incorrect please try again"); //error is the control name for error message
 	}
 
 });
@@ -77,15 +78,6 @@ Route::get('logout',function(){
 
 });
 
-
-Route::get('posts/{id}',function($id){
-
-	$oPost = Post::find($id); //using the model Topic 
-
-	//binding into Laravel. 
-	return View::make("post")->with("post",$oPost);
-
-});
 
 
 //make form for new member
@@ -137,7 +129,7 @@ Route::post('users',function(){
 
 });
 
-// //make form with user id and put the sticky data into the controls
+// //make form with user id and put the concrete data into the controls
 // //passing through the id of the user
 Route::get('users/{id}', function($id){
 
@@ -162,83 +154,123 @@ Route::get('users/{id}/edit', function($id){
 
 //update user details then validate
 
-Route::post('users/{id}', function($id){
+Route::put('users/{id}', function($id){
 
 
 	$aRules = array(
 		'firstname'=>'required',
 		'lastname'=>'required',
-		'email'=>'required|email|unique:users,email,'.$id);
-		//no need to have an avatar for personal preference
+		'email'=>'required|email|unique:users,email,'.$id
 		
-	$oValidator = Validator::make(Input::all(),$aRules);
+		);
+
+	$oValidator = Validator::make(Input::all(), $aRules);
+	
 
 	if($oValidator->passes()){
-		// $oUser = User::find($id);
-		// $oUser->fill(Input::all());
-		// $oUser->save();
-		User::find($id)->fill(Input::all())->save();
+		$oUser = User::find($id);
+		$oUser->fill(Input::all());
+		$oUser->save();
+		// User::find($id)->fill(Input::all())->save();
 		//redirect to users page
 
 		return Redirect::to("users/".$id);
 
 	}else{
-		return Redirect::to("users/".$id.'/edit')->withErrors($oValidator)->withInput();
+		return Redirect::to("users/".$id."/edit")->withErrors($oValidator)->withInput();
 	}
 	
 
-});
+})->before("auth");
 
-//->before("auth")
+//
 //posts
+// 1a. posts get
+// 1b. posts post
+// 1c. posts get
+// 1d. posts put
+
+Route::get('posts/{id}',function($id){
+
+	$oPost = Post::find($id); //using the model Topic 
+
+	//binding into Laravel. 
+	return View::make("post")->with("post",$oPost);
+
+})->where('id', '[0-9]+');
 
 
-// Route::get('posts/create', function(){
 
-	// $aTopics = Topic::lists("name","id"); //retrieving a list of colomn values This method will return an array of role titles. You may also specify a custom key column for the returned array:
+//make form for a new post
 
-	// return View::make('newComposeForm')->with('topics', $aTopics);
+Route::get('posts/create',function(){
+	$aTopics = Topic::lists("name","id");
 
 
-// })->before("auth|admin");
+	return View::make('newPostForm')->with("topics",$aTopics);
+	//return $aTopics;
 
+})->before("auth|admin");
 
 
 
 
 //User Inputs into form then form is validated and photo is renamed and placed into 'blog-photos'
 
-// Route::post('posts',function(){
+Route::post('posts',function(){
 
-// 	//validate input in the compose a blog form
+	//validate input in the compose a blog form
 
-// 	$aRules = array(
+	$aRules = array(
 
-// 		'topic_id'=>'required',
-// 		'title'=>'required',
-// 		'content'=>'required',
-// 		'photo_path'=>'required'
+		'topic_id'=>'required',
+		'title'=>'required',
+		'content'=>'required',
+		'photo_path'=>'required'
 
-// 		);
+		);
 
-// 	$oValidator = Validator::make(Input::all(),$aRules);
+	$oValidator = Validator::make(Input::all(),$aRules);
 
-// 	//if validation is all good then...
-// 	if($oValidator->passes()){
-// 		//upload photo
-// 		$sNewPhotoName = Input::get("title").".".Input::file("photo_path")->getClientOriginalExtension();
-// 		Input::file("photo_path")->move("blog-photos/",$sNewPhotoName);
+	//if validation is all good then...
+	if($oValidator->passes()){
+		//upload photo
+		$sNewPhotoName = Input::get("title").".".Input::file("photo_path")->getClientOriginalExtension();
+		Input::file("photo_path")->move("blog-photos",$sNewPhotoName);
 
-// 		$aDetails = Input::all();
-// 		$aDetails["photo_path"] = $sNewPhotoName;
+		$aDetails = Input::all();
+		$aDetails["photo_path"] = $sNewPhotoName;
 
-// 		$oPost = Post::create('aDetails');
-// 		//once all validated the post will be placed into the topic_id that it matches to in the system
-// 		return Redirect::to('topics/'.$oPost->topic_id);
+		$oPost = Post::create($aDetails);
+		//once all validated the post will be placed into the topic_id that it matches to in the system
+		return Redirect::to('topics/'.$oPost->topic_id);
 
-// 	}else{
-// 		Redirect::to('posts/create')->withErrors($oValidator)->withInput();
-// 	}
+	}else{
+		return Redirect::to('posts/create')->withErrors($oValidator)->withInput();
+	}
+
+
+})->before("auth|admin");
+
+//make a post for the comment.
+
+// //post create because the id is in create. 
+// Route::get('posts/{id}',function($id){
+
+// 	$oPost = Post::find($id);
+
+// 	return View::make("post")->with("post",$oPost);
+
+
+// })->where('id', '[0-9]+'); //where is 
+
+// //post create//use a controller to do the switching for you to find out which get to create
+// Route::get('posts/create',function($id){
+
 
 
 // });
+
+//content is king. on a mobile form is not enough room for content. you have alot of content, you have to allow the person
+//to gather the content at the right time. Taxonmies and thesauri facets come into place.
+

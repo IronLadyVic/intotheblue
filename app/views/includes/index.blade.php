@@ -60,7 +60,7 @@
 
           		<!-- //if user is a member do this -->	
           			@else
-          			<li><a href="{{URL::to('compose')}}">compose</a></li>
+          			<li><a href="{{URL::to('posts/create')}}">create a post</a></li>
           			<li><a href="{{URL::to('users/details')}}">account</a></li>
 					<li><a href="{{URL::to('logout')}}">logout</a></li>
 					@endif

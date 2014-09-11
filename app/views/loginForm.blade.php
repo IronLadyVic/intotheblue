@@ -21,7 +21,6 @@
 	{{Form::submit('Login', array('class'=>'submit'))}}
 
 
-</form>
 {{Form::close()}}
 {{Session::get("error")}}
 

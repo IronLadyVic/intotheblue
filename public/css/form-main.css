@@ -210,6 +210,15 @@ p {
     z-index: 1000;
 }
 
+#login label{
+    font-weight: bold;
+}
+
+#userDetails label{
+    font-weight: bold;
+}
+
+
 
 #login form input[type="text"], input[type="password"], input[type="email"], input[type="file"] {
     background-color: #3b4148;
@@ -257,6 +266,12 @@ text-transform: uppercase;
     color:black;
 }
 
+
+.error{
+    margin-top: -1em;
+    font-weight: 100;
+    color: teal;
+}
 /*i{
     position: absolute;
     z-index: 1000;
@@ -323,10 +338,10 @@ p a:hover{
 }
 
 
-label.error{
-    /*outline: red 1px solid;*/
-    position: relative;
-   color: #ea4c88;
+.error {
+margin-top: -1em;
+font-weight: 100;
+color: teal;
 }
 
 li{
