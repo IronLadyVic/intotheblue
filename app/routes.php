@@ -300,6 +300,8 @@ Route::post('posts',function(){
 
 		$oPost = Post::create($aDetails);
 		//once all validated the post will be placed into the topic_id that it matches to in the system
+		//got to the model and create the fillable variable to tell laravel what inputs it needs to fill
+		//protected $fillable = array('title', 'topic_id', 'content', 'photo_path');
 		return Redirect::to('topics/'.$oPost->topic_id);
 
 	}else{
@@ -309,15 +311,61 @@ Route::post('posts',function(){
 
 })->before("auth|admin");
 
+
+
 //make a post for the post for a user to comment.
 
+//display a single post when user clicks on read more.
+// 1a. a post get
+// 1b. a post post
+// 1c. a post get
+
+Route::get('posts/{id}', function($id){
+
+	$oPost = Post::find($id); //using the model Post 
+	//binding into Laravel. 
+	return View::make("readPost")->with("post",$oPost);
 
 
 
+})->where('id', '[0-9]+');
+
+
+Route::post('comments',function(){
+
+	$aRules= array(
+
+		"content"=>'required'
+
+		);
+	$oValidator = Validator::make(Input::all(), $aRules);
+
+	if($oValidator->passes()){
+
+		$aDetails = Input::all();
+		$aDetails["user_id"] = Auth::user()->id;
+
+		return Redirect::to("posts/".$oComment->post_id);
+	}else{
+
+		return Redirect::to("posts/".$user_id->withErrors());
+
+	}
+
+});
+
+Route::get('comments{id}', function($id){
+
+	$oComment = Comment::find($id); //using the model Post 
+	//binding into Laravel. 
+	return View::make("topics/1")->with("comment",$oComment);
 
 
 
+});
+	
 
+	
 
 
 

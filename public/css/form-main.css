@@ -410,8 +410,14 @@ ul li a{
     position: relative;
     
 }
+#detail-form{
+    margin-top: 2em;
+    margin-left: -0.1em;
+}
 
-
+#detail-form .edit{
+    margin-left: 0em;
+}
 /* ==========================================================================
    breakpoints
    ==========================================================================

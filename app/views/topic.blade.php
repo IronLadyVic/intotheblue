@@ -7,10 +7,10 @@
 			<article class="group">
 				<img src="{{URL::to('blog-photos/'.$post->photo_path)}}" alt="post photo">
 				<h4>{{$post->title}}</h4>
-				<p>{{$post->content}}</p>
+				<p>{{substr($post->content, 0, 170)}}....</p>
 				<span>
-				<a href="{{URL::to('posts/comment'.$post->id)}}"></a>{{Form::label('');}}
-				{{Form::button('read more');}}	
+				<a href="{{URL::to('posts/'.$post->id)}}">
+				{{Form::button('read more');}}</a>	
 				{{@Form::hidden("$postID", $post->id)}}</a>
 				</span>	
 			</article>

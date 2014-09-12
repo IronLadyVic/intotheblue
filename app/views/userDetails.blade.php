@@ -5,6 +5,8 @@
 <div id="userDetails">
             <h2 class="form-header">My details</h2>
 
+                {{Form::model($user, array('url'=> 'users/details'.$user->id, 'class'=>'cmxform', 'id'=>'detail-form', 'files'=>'true'))}}
+                <!-- //form open will accept data and form model will not -->
 
                 {{Form::label('username','Username')}}
                 <p><span><i class="fa fa-user"></i></span>                    
